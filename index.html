@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="scripts/google-tts.js"></script>
+		<script type="text/javascript" src="scripts/soundmanager2.js"></script>
+
+
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Open  in Chrome  use right arrow  to change slides.. </h1>
+
+				</section>
+
+				<section sayWords="Hello, welcome to the MYOB tech council"> 
+					<h1>Hello !</h1>
+				</section>
+
+
+				<section sayWords="Listen carefully, We are going to play a short game"> 
+					<h1>Listen</h1>
+				</section>
+
+ 				<section sayWords="Its called have you ever"> 
+					<h1>Have you ever???</h1>
+				</section>
+
+
+				<section sayWords="I am going to ask you a few questions"> 
+					<h1>Rules</h1>
+				</section>
+
+				<section sayWords="If you answer yes,  you must run into the middle of the room and high five everyone"> 
+					<h1></h1>
+				</section>
+
+				<section sayWords="Here goes"> 
+					<h1>Standby...</h1>
+				</section>
+
+
+				<section sayWords="Have you ever jumped out of a plane"> 
+					<h1>Have you ever jumped out of a plane?</h1>
+				</section>
+
+				<section sayWords="Have you ever coded  in assembly"> 
+					<h1>Have you ever coded in Assembly Language?</h1>
+				</section>
+
+				<section sayWords="Have you ever been scuba diving on the great barrier reef"> 
+					<h1>Have you ever been scuba diving on the great barrier reef?</h1>
+				</section>
+
+				<section sayWords="Have you ever debugged a program by writing to a text file"> 
+					<h1>Have you ever debugged a program by writing to a text file?</h1>
+				</section>
+
+				<section sayWords="Have you ever eaten frogs legs"> 
+					<h1>Have you ever eaten frogs legs?</h1>
+				</section>
+
+				<section sayWords="Have you ever lived overseas for more than 1 year"> 
+					<h1>Have you ever lived overseas for more than 1 year?</h1>
+				</section>
+
+				<section sayWords="Have you ever sung karaoke"> 
+					<h1>Have you ever sung karaoke?</h1>
+				</section>
+
+				<section sayWords="Thanks for playing. love your work"> 
+					<h1>Love your work!</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+
+ soundManager.setup({
+        url: '/',
+        preferFlash: false,
+        onready : function() {
+				console.log('ready SM');}
+    });
+
+
+
+
+    Reveal.addEventListener('slidechanged', function (event) {
+        
+        nextindexh = event.indexh;
+     
+        if ($("section:eq(" + nextindexh + ")").attr('sayWords') !=null)
+        {
+            var googleTTS = new window.GoogleTTS();
+            var sentence = $("section:eq(" + nextindexh + ")").attr('sayWords');
+             googleTTS.play(sentence, 'en', function(err) {
+              if (err) {
+                console.log(err);
+              }
+              console.log('Finished playing');
+            });
+        }
+
+    });
+
+		</script>
+
+	</body>
+</html>
